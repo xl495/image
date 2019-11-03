@@ -1,8 +1,8 @@
 module.exports = {
-    // publicPath:
-    //   process.env.NODE_ENV === "production" ? "/" : "/",
+    publicPath:
+      process.env.NODE_ENV === "production" ? "./" : "/",
     outputDir: "dist", // 构建输出目录
-    assetsDir: "assets", // 静态资源目录 (js, css, img, fonts)
+    assetsDir: "./assets", // 静态资源目录 (js, css, img, fonts)
     lintOnSave: true, // 是否开启eslint保存检测，有效值：ture | false | 'error'
   
     transpileDependencies: [], // 默认babel-loader忽略mode_modules，这里可增加例外的依赖包名
@@ -33,7 +33,7 @@ module.exports = {
           target: "http://voidcraft.s.3322.net:269",
           changeOrigin: true,
           pathRewrite: {
-            "^/api": "/"
+            "^/": "/"
           }
         },
         "/apis": {
