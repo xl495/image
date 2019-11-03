@@ -158,12 +158,13 @@ export default {
                    const r = await axios.post('/api/uploadImg',formData);
                    if(r){
                        let arr = []
+                       
                        r.data.ok.forEach(item=>{
                            arr.push({
-                               url:`http://voidcraft.s.3322.net${item.imageUrl}`,
-                               htmlCode: `<img src="http://voidcraft.s.3322.net${item.imageUrl}" />`,
-                               ubbCode:`[img]http://voidcraft.s.3322.net${item.imageUrl}[/img]`,
-                               markCode:`![Markdown](http://voidcraft.s.3322.net${item.imageUrl})`,
+                               url: location.origin+item.imageUrl,
+                               htmlCode: `<img src="${location.origin+item.imageUrl}" />`,
+                               ubbCode:`[img]${location.origin+item.imageUrl}[/img]`,
+                               markCode:`![Markdown](${location.origin+item.imageUrl})`,
                                title:item.fileName,
                            })
                        })
