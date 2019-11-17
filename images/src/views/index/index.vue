@@ -105,7 +105,7 @@ export default {
     },
     methods:{
         async getImageRestrict(){
-            const res = await axios.get('/api/getImageRestrict');
+            const res = await axios.get('/getImageRestrict');
             this.fileMaxCount = res.data.fileMaxCount;
             this.fileMaxSize = res.data.fileMaxSize;
         },
@@ -155,16 +155,15 @@ export default {
                 });
                 if(type){
                     let log = Loading.service({fullscreen:true});
-                   const r = await axios.post('/api/uploadImg',formData);
+                   const r = await axios.post('/uploadImg',formData);
                    if(r){
                        let arr = []
-                       
                        r.data.ok.forEach(item=>{
                            arr.push({
-                               url: location.origin+item.imageUrl,
-                               htmlCode: `<img src="${location.origin+item.imageUrl}" />`,
-                               ubbCode:`[img]${location.origin+item.imageUrl}[/img]`,
-                               markCode:`![Markdown](${location.origin+item.imageUrl})`,
+                               url: 'http://'+location.host+item.imageUrl,
+                               htmlCode: `<img src="http://${location.host+item.imageUrl}" />`,
+                               ubbCode:`[img]http://${location.host+item.imageUrl}[/img]`,
+                               markCode:`![Markdown](http://${location.host+item.imageUrl})`,
                                title:item.fileName,
                            })
                        })
